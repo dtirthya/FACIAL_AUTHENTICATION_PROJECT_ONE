@@ -23,25 +23,18 @@
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
-    <loaded-nodes>
-      <connection connection-id="8780a44a-46a1-4a8a-b28a-dc81b89dffc0">
-        <schema name="main" object-types="view, table" />
-      </connection>
-    </loaded-nodes>
+    <loaded-nodes />
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
-    <connection id="8780a44a-46a1-4a8a-b28a-dc81b89dffc0">
-      <console name="facial_authentication_users_database" type="STANDARD" schema="main" session="Main">select * from user;</console>
+    <connection id="ef052687-938d-47c2-bd03-d977b7596cfe">
+      <console name="Connection" type="STANDARD" schema="main" session="Main"><![CDATA[delete from user;]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
     <open-files />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
-    <connection id="8780a44a-46a1-4a8a-b28a-dc81b89dffc0" />
-  </component>
-  <component name="DBNavigator.Project.DatasetFilterManager">
-    <filter-actions connection-id="8780a44a-46a1-4a8a-b28a-dc81b89dffc0" dataset="main.user" active-filter-id="" />
+    <connection id="ef052687-938d-47c2-bd03-d977b7596cfe" />
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers />
@@ -66,9 +59,9 @@
   </component>
   <component name="DBNavigator.Project.Settings">
     <connections>
-      <connection id="8780a44a-46a1-4a8a-b28a-dc81b89dffc0" active="true">
+      <connection id="ef052687-938d-47c2-bd03-d977b7596cfe" active="true">
         <database>
-          <name value="facial_authentication_users_database" />
+          <name value="Connection" />
           <description value="" />
           <database-type value="SQLITE" />
           <config-type value="BASIC" />
