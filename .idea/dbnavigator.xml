@@ -23,11 +23,15 @@
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
-    <loaded-nodes />
+    <loaded-nodes>
+      <connection connection-id="8780a44a-46a1-4a8a-b28a-dc81b89dffc0">
+        <schema name="main" object-types="view, table" />
+      </connection>
+    </loaded-nodes>
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="8780a44a-46a1-4a8a-b28a-dc81b89dffc0">
-      <console name="facial_authentication_users_database" type="STANDARD" schema="main" session="Main"><![CDATA[select * from user;]]></console>
+      <console name="facial_authentication_users_database" type="STANDARD" schema="main" session="Main">select * from user;</console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
