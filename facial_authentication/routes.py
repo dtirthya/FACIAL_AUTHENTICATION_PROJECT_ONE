@@ -27,14 +27,14 @@ def registration():
         os.mkdir(u_folder_name)
         #Getting the details of the image uploaded
         filename = secure_filename(form.image.data.filename)
+        #Setting the name of the file
+        ren_name = u_folder_name + '_' + 'REGISTRATION'
+        #Renaming the file
+        filename = ren_name
         #Setting current working directory to the previously created folder of the user
         os.chdir(os.getcwd() + '\\' + u_folder_name)
         #Saving the image to that folder
         form.image.data.save(filename)
-        #Renaming the image
-        ren_name = u_folder_name + '_' + 'REGISTRATION'
-        if f in os.getcwd():
-            os.rename(filename, ren_name)
         #Saving the current path to a variable to use for database
         image_path = os.getcwd() + '\\'
         #Reverting back to the original path
