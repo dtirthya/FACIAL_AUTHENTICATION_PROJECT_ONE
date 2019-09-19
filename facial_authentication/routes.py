@@ -1,9 +1,10 @@
 #Imported libraries
 
-from flask import render_template, redirect, url_for, flash, request
+from flask import render_template, redirect, url_for, flash
 from facial_authentication import app, db
 from facial_authentication.forms import RegistrationForm, LoginForm
-from facial_authentication.models import User, Images
+from facial_authentication.models import User
+from werkzeug.utils import secure_filename
 import os
 
 #Routes
@@ -16,17 +17,29 @@ def home():
 def registration():
     form = RegistrationForm()
     if form.validate_on_submit():
-        u_folder_name = str.upper(form.first_name.data) + ' ' + str.upper(form.middle_name.data) + ' ' + str.upper(form.last_name.data)
+        #Making a name of the user for creating a folder
+        u_folder_name = str.upper(form.first_name.data) + '_' + str.upper(form.middle_name.data) + '_' + str.upper(form.last_name.data)
+        #Getting the path of the  current working directory
         original_path = os.getcwd()
-        os.chdir(original_path + '\\facial_authentication\\static')
+        #Navigating to the static folder
+        os.chdir(os.getcwd() + '\\facial_authentication\\static')
+        #Creating a folder in the name of the user inside the static directory
         os.mkdir(u_folder_name)
-        os.chdir(os.getcwd() + '\\' + u_folder_name + '\\')
-        for file in request.files.getlist(form.image.data):
-            file.save(os.getcwd(), file)
+        #Getting the details of the image uploaded
+        filename = secure_filename(form.image.data.filename)
+        #Setting current working directory to the previously created folder of the user
+        os.chdir(os.getcwd() + '\\' + u_folder_name)
+        #Saving the image to that folder
+        form.image.data.save(filename)
+        #Renaming the image
+        ren_name = u_folder_name + '_' + 'REGISTRATION'
+        if f in os.getcwd():
+            os.rename(filename, ren_name)
+        #Saving the current path to a variable to use for database
+        image_path = os.getcwd() + '\\'
+        #Reverting back to the original path
         os.chdir(original_path)
-        path = 'C:\\Users\\Tirthya Dasgupta\\Documents\\PROJECTS\PYTHON_PROJECTS\\FLASK_MACHINE_LEARNING PROJECTS\\FACIAL_AUTHENTICATION_PROJECT_ONE\\facial_authentication\\static' + '\\' + u_folder_name + '\\'
-        os.path.join(path, form.image.data)
-        image = url_for('static', filename=path)
+        image = url_for(image_path, filename=form.image.data.filename)
         user = User(first_name=form.first_name.data, middle_name=form.middle_name.data, last_name=form.last_name.data, email=form.email.data, u_image=image)
         db.session.add(user)
         db.session.commit()
