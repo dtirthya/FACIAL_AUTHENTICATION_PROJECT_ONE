@@ -18,7 +18,10 @@ def registration():
     form = RegistrationForm()
     if form.validate_on_submit():
         #Making a name of the user for creating a folder
-        u_folder_name = str.upper(form.first_name.data) + '_' + str.upper(form.middle_name.data) + '_' + str.upper(form.last_name.data)
+        if form.middle_name.data == '':
+            u_folder_name = str.upper(form.first_name.data) + '_' + str.upper(form.last_name.data)
+        else:
+            u_folder_name = str.upper(form.first_name.data) + '_' + str.upper(form.middle_name.data) + '_' + str.upper(form.last_name.data)
         #Getting the path of the  current working directory
         original_path = os.getcwd()
         #Navigating to the static folder
